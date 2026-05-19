@@ -1,0 +1,36 @@
+[1.788s] Invoking command in '/home/mathias/saf_ws/src/saf_tcpserver': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/mathias/saf_ws/build/saf_tcpserver/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/mathias/saf_ws/install/saf_tcpserver/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/saf_tcpserver build --build-base /home/mathias/saf_ws/build/saf_tcpserver/build install --record /home/mathias/saf_ws/build/saf_tcpserver/install.log --single-version-externally-managed install_data
+[2.308s] running egg_info
+[2.309s] creating ../../build/saf_tcpserver/saf_tcpserver.egg-info
+[2.353s] writing ../../build/saf_tcpserver/saf_tcpserver.egg-info/PKG-INFO
+[2.353s] writing dependency_links to ../../build/saf_tcpserver/saf_tcpserver.egg-info/dependency_links.txt
+[2.353s] writing entry points to ../../build/saf_tcpserver/saf_tcpserver.egg-info/entry_points.txt
+[2.354s] writing requirements to ../../build/saf_tcpserver/saf_tcpserver.egg-info/requires.txt
+[2.354s] writing top-level names to ../../build/saf_tcpserver/saf_tcpserver.egg-info/top_level.txt
+[2.354s] writing manifest file '../../build/saf_tcpserver/saf_tcpserver.egg-info/SOURCES.txt'
+[2.444s] reading manifest file '../../build/saf_tcpserver/saf_tcpserver.egg-info/SOURCES.txt'
+[2.444s] adding license file 'LICENSE'
+[2.445s] writing manifest file '../../build/saf_tcpserver/saf_tcpserver.egg-info/SOURCES.txt'
+[2.445s] running build
+[2.445s] running build_py
+[2.445s] creating /home/mathias/saf_ws/build/saf_tcpserver/build
+[2.446s] creating /home/mathias/saf_ws/build/saf_tcpserver/build/lib
+[2.446s] creating /home/mathias/saf_ws/build/saf_tcpserver/build/lib/saf_tcpserver
+[2.446s] copying saf_tcpserver/publisher.py -> /home/mathias/saf_ws/build/saf_tcpserver/build/lib/saf_tcpserver
+[2.446s] copying saf_tcpserver/__init__.py -> /home/mathias/saf_ws/build/saf_tcpserver/build/lib/saf_tcpserver
+[2.447s] copying saf_tcpserver/subscriber.py -> /home/mathias/saf_ws/build/saf_tcpserver/build/lib/saf_tcpserver
+[2.447s] running install
+[2.455s] running install_lib
+[2.501s] creating /home/mathias/saf_ws/install/saf_tcpserver/lib/python3.12/site-packages/saf_tcpserver
+[2.501s] copying /home/mathias/saf_ws/build/saf_tcpserver/build/lib/saf_tcpserver/publisher.py -> /home/mathias/saf_ws/install/saf_tcpserver/lib/python3.12/site-packages/saf_tcpserver
+[2.501s] copying /home/mathias/saf_ws/build/saf_tcpserver/build/lib/saf_tcpserver/__init__.py -> /home/mathias/saf_ws/install/saf_tcpserver/lib/python3.12/site-packages/saf_tcpserver
+[2.502s] copying /home/mathias/saf_ws/build/saf_tcpserver/build/lib/saf_tcpserver/subscriber.py -> /home/mathias/saf_ws/install/saf_tcpserver/lib/python3.12/site-packages/saf_tcpserver
+[2.502s] byte-compiling /home/mathias/saf_ws/install/saf_tcpserver/lib/python3.12/site-packages/saf_tcpserver/publisher.py to publisher.cpython-312.pyc
+[2.503s] byte-compiling /home/mathias/saf_ws/install/saf_tcpserver/lib/python3.12/site-packages/saf_tcpserver/__init__.py to __init__.cpython-312.pyc
+[2.503s] byte-compiling /home/mathias/saf_ws/install/saf_tcpserver/lib/python3.12/site-packages/saf_tcpserver/subscriber.py to subscriber.cpython-312.pyc
+[2.503s] running install_data
+[2.504s] creating /home/mathias/saf_ws/install/saf_tcpserver/share
+[2.504s] creating /home/mathias/saf_ws/install/saf_tcpserver/share/ament_index
+[2.504s] creating /home/mathias/saf_ws/install/saf_tcpserver/share/ament_index/resource_index
+[2.504s] creating /home/mathias/saf_ws/install/saf_tcpserver/share/ament_index/resource_index/packages
+[2.505s] error: can't copy 'resource/saf_tcpserver': doesn't exist or not a regular file
+[2.536s] Invoked command in '/home/mathias/saf_ws/src/saf_tcpserver' returned '1': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/mathias/saf_ws/build/saf_tcpserver/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/mathias/saf_ws/install/saf_tcpserver/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/saf_tcpserver build --build-base /home/mathias/saf_ws/build/saf_tcpserver/build install --record /home/mathias/saf_ws/build/saf_tcpserver/install.log --single-version-externally-managed install_data

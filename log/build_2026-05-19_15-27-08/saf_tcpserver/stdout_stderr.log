@@ -1,0 +1,23 @@
+running egg_info
+writing ../../build/saf_tcpserver/saf_tcpserver.egg-info/PKG-INFO
+writing dependency_links to ../../build/saf_tcpserver/saf_tcpserver.egg-info/dependency_links.txt
+deleting ../../build/saf_tcpserver/saf_tcpserver.egg-info/entry_points.txt
+writing requirements to ../../build/saf_tcpserver/saf_tcpserver.egg-info/requires.txt
+writing top-level names to ../../build/saf_tcpserver/saf_tcpserver.egg-info/top_level.txt
+reading manifest file '../../build/saf_tcpserver/saf_tcpserver.egg-info/SOURCES.txt'
+adding license file 'LICENSE'
+writing manifest file '../../build/saf_tcpserver/saf_tcpserver.egg-info/SOURCES.txt'
+running build
+running build_py
+copying saf_tcpserver/__init__.py -> /home/mathias/saf_ws/build/saf_tcpserver/build/lib/saf_tcpserver
+running install
+running install_lib
+copying /home/mathias/saf_ws/build/saf_tcpserver/build/lib/saf_tcpserver/__init__.py -> /home/mathias/saf_ws/install/saf_tcpserver/lib/python3.12/site-packages/saf_tcpserver
+byte-compiling /home/mathias/saf_ws/install/saf_tcpserver/lib/python3.12/site-packages/saf_tcpserver/__init__.py to __init__.cpython-312.pyc
+running install_data
+copying resource/saf_tcpserver -> /home/mathias/saf_ws/install/saf_tcpserver/share/ament_index/resource_index/packages
+copying package.xml -> /home/mathias/saf_ws/install/saf_tcpserver/share/saf_tcpserver
+running install_egg_info
+Copying ../../build/saf_tcpserver/saf_tcpserver.egg-info to /home/mathias/saf_ws/install/saf_tcpserver/lib/python3.12/site-packages/saf_tcpserver-0.0.0-py3.12.egg-info
+running install_scripts
+writing list of installed files to '/home/mathias/saf_ws/build/saf_tcpserver/install.log'

@@ -1,0 +1,17 @@
+[1.542s] Invoking command in '/home/mathias/saf_ws/src/saf_tcpserver': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/mathias/saf_ws/build/saf_tcpserver/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/mathias/saf_ws/install/saf_tcpserver/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/saf_tcpserver build --build-base /home/mathias/saf_ws/build/saf_tcpserver/build install --record /home/mathias/saf_ws/build/saf_tcpserver/install.log --single-version-externally-managed install_data
+[2.060s] running egg_info
+[2.105s] writing ../../build/saf_tcpserver/saf_tcpserver.egg-info/PKG-INFO
+[2.106s] writing dependency_links to ../../build/saf_tcpserver/saf_tcpserver.egg-info/dependency_links.txt
+[2.106s] writing entry points to ../../build/saf_tcpserver/saf_tcpserver.egg-info/entry_points.txt
+[2.106s] writing requirements to ../../build/saf_tcpserver/saf_tcpserver.egg-info/requires.txt
+[2.107s] writing top-level names to ../../build/saf_tcpserver/saf_tcpserver.egg-info/top_level.txt
+[2.198s] reading manifest file '../../build/saf_tcpserver/saf_tcpserver.egg-info/SOURCES.txt'
+[2.199s] adding license file 'LICENSE'
+[2.199s] writing manifest file '../../build/saf_tcpserver/saf_tcpserver.egg-info/SOURCES.txt'
+[2.200s] running build
+[2.200s] running build_py
+[2.200s] running install
+[2.210s] running install_lib
+[2.256s] running install_data
+[2.257s] error: can't copy 'resource/saf_tcpserver': doesn't exist or not a regular file
+[2.288s] Invoked command in '/home/mathias/saf_ws/src/saf_tcpserver' returned '1': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/mathias/saf_ws/build/saf_tcpserver/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/mathias/saf_ws/install/saf_tcpserver/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/saf_tcpserver build --build-base /home/mathias/saf_ws/build/saf_tcpserver/build install --record /home/mathias/saf_ws/build/saf_tcpserver/install.log --single-version-externally-managed install_data
