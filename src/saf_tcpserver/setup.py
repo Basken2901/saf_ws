@@ -22,8 +22,11 @@ setup(
             'pytest',
         ],
     },
+
     entry_points={
         'console_scripts': [
+            'server_node = saf_tcpserver.publisher:main',
+            'logger_node = saf_tcpserver.subscriber:main',
         ],
-    },
+},
 )

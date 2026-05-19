@@ -1,37 +1,78 @@
+import socket
+import threading
+
 import rclpy
 from rclpy.node import Node
-
 from std_msgs.msg import String
 
 
-class MinimalPublisher(Node):
+class PLCServer(Node):
 
     def __init__(self):
-        super().__init__('minimal_publisher')
-        self.publisher_ = self.create_publisher(String, 'topic', 10)
-        timer_period = 0.5  # seconds
-        self.timer = self.create_timer(timer_period, self.timer_callback)
-        self.i = 0
+        super().__init__('plc_server')
 
-    def timer_callback(self):
-        msg = String()
-        msg.data = 'Hello World: %d' % self.i
-        self.publisher_.publish(msg)
-        self.get_logger().info('Publishing: "%s"' % msg.data)
-        self.i += 1
+        # ROS publisher (like your example)
+        self.publisher_ = self.create_publisher(String, 'plc_data', 10)
+
+        # TCP setup (PLC connection)
+        self.host = "0.0.0.0"
+        self.port = 9999
+
+        self.server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.server.bind((self.host, self.port))
+        self.server.listen(5)
+
+        self.get_logger().info(f"Listening on {self.host}:{self.port}")
+
+        # Start TCP thread (important so ROS doesn't block)
+        self.thread = threading.Thread(target=self.accept_clients, daemon=True)
+        self.thread.start()
+
+    def accept_clients(self):
+        while True:
+            client, addr = self.server.accept()
+            self.get_logger().info(f"PLC connected: {addr}")
+
+            threading.Thread(
+                target=self.handle_client,
+                args=(client,),
+                daemon=True
+            ).start()
+
+    def handle_client(self, client):
+
+        while True:
+            data = client.recv(1024)
+
+            if not data:
+                break
+
+            msg_text = data.decode()
+
+            # Create ROS message (like your timer example)
+            msg = String()
+            msg.data = msg_text
+
+            # Publish to ROS topic
+            self.publisher_.publish(msg)
+
+            # Log it
+            self.get_logger().info(f"PLC: {msg_text}")
+
+            # Optional ACK to PLC
+            client.send(b"ACK")
+
+        client.close()
 
 
 def main(args=None):
     rclpy.init(args=args)
 
-    minimal_publisher = MinimalPublisher()
+    node = PLCServer()
 
-    rclpy.spin(minimal_publisher)
+    rclpy.spin(node)
 
-    # Destroy the node explicitly
-    # (optional - otherwise it will be done automatically
-    # when the garbage collector destroys the node object)
-    minimal_publisher.destroy_node()
+    node.destroy_node()
     rclpy.shutdown()
 
 
