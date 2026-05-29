@@ -1,0 +1,108 @@
+
+CASE state OF
+		
+	0: //Initialize
+	IO.xQA1_RIGHT := TRUE;
+	IO.xQA1_SLOW := FALSE;
+	IO.xMB20 := FALSE;
+	RFID.ClearError();
+	
+	state := 1;
+	
+	
+	1: //Wait for RFID to clear
+	IF RFID.xReady THEN
+		RFID.Connect(usiNodeId := 32, usiNetworkId := 0, usiChannel := 0);
+		state := 2;
+	END_IF
+	
+	2: //Wait for RFID to connect
+	IF RFID.xReady THEN
+		state := 3;
+	END_IF
+	
+	3: //Slowing
+	IF IO.xBG24 = TRUE THEN
+		IO.xQA1_SLOW := TRUE;
+		state := 4;
+	END_IF
+	
+	
+	4: //Wait for carrier after slowed
+	IF IO.xBG21 = TRUE THEN
+		IO.xMB20 := FALSE;
+		state := 5;
+	END_IF
+	
+	5: //Read the RFID tag:
+	RFID.ReadTag(uiStartAddress := 0, uiDataLength := SIZEOF(rfidData), ADR(rfidData));
+	state := 6;
+	
+	6: //Wait for RFID read
+	IF RFID.xReady THEN
+		IF correct_id <= 8 THEN
+			state:= 8; 
+		ELSE
+			state:= 7;
+		END_IF
+	END_IF
+	
+	7: //Activate timer
+	timer(IN:=TRUE, PT:= T#3S);
+	state := 9;
+	
+	
+	8: //Activate another timer (eg for specefic carrieres)
+	timer(IN:=TRUE, PT:= T#1S);
+	state := 9;
+	
+	9: //Setup socket
+    hSocket := SysSockCreate(SOCKET_AF_INET, SOCKET_STREAM, SOCKET_IPPROTO_TCP, ADR(result));
+    IF hSocket <> -1 THEN
+        state := 10;
+    END_IF
+	
+	10: //Connect to tcp server
+    addr.sin_family := SOCKET_AF_INET;
+    addr.sin_port := SysSockHtons(9999);
+    SysSockInetAddr('172.20.66.154', ADR(addr.sin_addr));
+
+    state := 11;
+	
+	11: //
+    result := SysSockConnect(hSocket, ADR(addr), SIZEOF(addr));
+    IF result = 0 THEN
+        state := 12;
+    END_IF
+	
+	12: //Create message string
+    sendString := CONCAT('Carrier ID: ', UINT_TO_STRING(correct_id));
+
+    state := 13;
+	
+	13: //Send the message string
+	bytesSent := SysSockSend(hSocket, ADR(sendString), LEN(sendString), 0, ADR(result));
+
+    state := 14;
+	
+	14: //Wait for the carrier to pass
+	IF timer.Q = TRUE THEN
+		timer(IN:=FALSE);
+		IO.xMB20 := TRUE;
+		state := 15;
+	END_IF
+	
+	15: //Wait for carrier to leave
+	IF IO.xBG21 = FALSE THEN
+		IO.xMB20 := FALSE;
+		IO.xQA1_SLOW := FALSE;
+		state := 3;
+	END_IF
+	
+	
+	
+	
+END_CASE
+timer();
+RFID();
+correct_id := dc_ecp.SwapWORD(rfidData.uiCarrierID);

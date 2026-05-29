@@ -1,0 +1,16 @@
+PROGRAM PLC_PRG
+
+VAR
+	state: UINT := 0;
+	timer: TON;
+	RFID: dc_ecp.Dtm425;
+	rfidData: dc_ecp.st_CPF_RfidData;
+	correct_id: WORD;
+	
+	hSocket: DINT;
+	result: DINT;
+	addr: SOCKADDRESS;
+
+    	sendString: STRING(50);
+    	bytesSent: DINT;
+END_VAR
