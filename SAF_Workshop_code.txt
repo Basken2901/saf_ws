@@ -56,20 +56,20 @@ CASE state OF
 	timer(IN:=TRUE, PT:= T#1S);
 	state := 9;
 	
-	9: //Setup socket
+	9: //Open communication socket
     hSocket := SysSockCreate(SOCKET_AF_INET, SOCKET_STREAM, SOCKET_IPPROTO_TCP, ADR(result));
     IF hSocket <> -1 THEN
         state := 10;
     END_IF
 	
-	10: //Connect to tcp server
+	10: //Translate to a usable address for connection
     addr.sin_family := SOCKET_AF_INET;
     addr.sin_port := SysSockHtons(9999);
     SysSockInetAddr('172.20.66.154', ADR(addr.sin_addr));
 
     state := 11;
 	
-	11: //
+	11: //Connect to the tcp server
     result := SysSockConnect(hSocket, ADR(addr), SIZEOF(addr));
     IF result = 0 THEN
         state := 12;
